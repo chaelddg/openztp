@@ -2,12 +2,58 @@ import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
-import ss from './index.sass'
+import stylesheet from 'styles/index.scss'
 
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+import { Layout, Menu, Breadcrumb, Icon, Card, Rate } from 'antd'
+const { Header, Content, Footer, Sider } = Layout
 
-{/* <Link href='/a'><a>Home</a></Link> | */}
+const fakeData = [
+	{
+		"id": 1001,
+		"biz_name": "My Kitchen by Chef Chris",
+		"rating": 3,
+		"price_range": "2000 - 3000",
+		"city": "Manila City",
+		"address": "1032-34 Belen Street Manila, 1007 Metro Manila Philippines",
+		"tel_number": "02-5212371"
+	},
+	{
+		"id": 2002,
+		"biz_name": "My Kitchen by Chef Chris",
+		"rating": 3,
+		"price_range": "2000 - 3000",
+		"city": "Manila City",
+		"address": "1032-34 Belen Street Manila, 1007 Metro Manila Philippines",
+		"tel_number": "02-5212371"
+	},
+	{
+		"id": 3003,
+		"biz_name": "My Kitchen by Chef Chris",
+		"rating": 3,
+		"price_range": "2000 - 3000",
+		"city": "Manila City",
+		"address": "1032-34 Belen Street Manila, 1007 Metro Manila Philippines",
+		"tel_number": "02-5212371"
+	},
+	{
+		"id": 4004,
+		"biz_name": "My Kitchen by Chef Chris",
+		"rating": 3,
+		"price_range": "2000 - 3000",
+		"city": "Manila City",
+		"address": "1032-34 Belen Street Manila, 1007 Metro Manila Philippines",
+		"tel_number": "02-5212371"
+	},
+	{
+		"id": 5005,
+		"biz_name": "My Kitchen by Chef Chris",
+		"rating": 3,
+		"price_range": "2000 - 3000",
+		"city": "Manila City",
+		"address": "1032-34 Belen Street Manila, 1007 Metro Manila Philippines",
+		"tel_number": "02-5212371"
+	}
+]
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -17,63 +63,52 @@ export default ({ children }) => (
       <title>OpenZtp</title>
       <meta charSet='utf-8' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+			<style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/antd/2.13.6/antd.min.css"/>
-			<link rel='stylesheet' href='/static/css/bundle.css' />
     </Head>
-    <Header className="header">
-      <div className={ss.logo}/>
+		<Header className="header">
+      <div className="logo" />
       <Menu
-        theme="dark"
+        theme="light"
         mode="horizontal"
         defaultSelectedKeys={['2']}
         style={{ lineHeight: '64px' }}
       >
-        <Menu.Item key="1">nav 1</Menu.Item>
-        <Menu.Item key="2">nav 2</Menu.Item>
-        <Menu.Item key="3">nav 3</Menu.Item>
+				<Menu.Item key="alipay">
+					<Link href='/b'>
+						<span>
+							<Icon type="setting" />Settings
+						</span>
+					</Link>
+				</Menu.Item>
+				<Menu.Item key="search">
+					<Link href='/a'>
+						<span>
+							<Icon type="search" />Search
+						</span>
+					</Link>
+        </Menu.Item>
       </Menu>
     </Header>
-    <Content style={{ padding: '0 50px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
-      </Breadcrumb>
-      <Layout style={{ padding: '24px 0', background: '#fff' }}>
-        <Sider width={200} style={{ background: '#fff' }}>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%' }}
-          >
-            <SubMenu key="sub1" title={<span><Icon type="user" />subnav 1</span>}>
-              <Menu.Item key="1">option1</Menu.Item>
-              <Menu.Item key="2">option2</Menu.Item>
-              <Menu.Item key="3">option3</Menu.Item>
-              <Menu.Item key="4">option4</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="laptop" />subnav 2</span>}>
-              <Menu.Item key="5">option5</Menu.Item>
-              <Menu.Item key="6">option6</Menu.Item>
-              <Menu.Item key="7">option7</Menu.Item>
-              <Menu.Item key="8">option8</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="notification" />subnav 3</span>}>
-              <Menu.Item key="9">option9</Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
-            </SubMenu>
-          </Menu>
-        </Sider>
-        <Content style={{ padding: '0 24px', minHeight: 280 }}>
-          Content
-        </Content>
-      </Layout>
+    <Content style={{ padding: '50px 50px' }}>
+			{
+				fakeData.map((data, index) => (
+					<div key={data.id} className="item-group">
+						<Card title={`${data.id} - ${data.biz_name}`} extra={<a href="#">More</a>} style={{ width: 500 }}>
+							<img src="//via.placeholder.com/140x100" />
+					    <p>{ data.price_range }</p>
+							<div>
+								<span>
+					        <Rate onChange={()=> {}} value={data.rating} />
+					        {data.rating && <span className="ant-rate-text">{data.rating} stars</span>}
+					      </span>
+							</div>
+					    <p>{ data.city }</p>
+					  </Card>
+					</div>
+				))
+			}
+
     </Content>
-    <Footer style={{ textAlign: 'center' }}>
-      Ant Design ©2016 Created by Ant UED
-    </Footer>
   </Layout>
 )

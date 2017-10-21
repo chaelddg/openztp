@@ -1,0 +1,13 @@
+@import 'normalize.css';
+
+$primary-color-black: #000000;
+$primary-color-white: #ffffff;
+
+.header.ant-layout-header {
+	background-color: $primary-color-white;
+	padding: 0;
+}
+
+.item-group {
+	margin-bottom: 10px;
+}

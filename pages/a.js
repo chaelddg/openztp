@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { DatePicker } from 'antd';
+import { Card, DatePicker } from 'antd';
 
 export default () =>
   <div>
