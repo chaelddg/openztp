@@ -60,3 +60,7 @@ typings/
 # static css files build
 
 static/
+
+# .next js bundle
+
+.next/
