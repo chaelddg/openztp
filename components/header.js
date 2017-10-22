@@ -22,19 +22,22 @@ export default () => (
 				</Link>
 			</Menu.Item>
 			<Menu.Item key="search">
-				<Link href='/a'>
+				<Link href='/a'> 
 					<span>
 						<Icon type="search" />Search
+					</span>
+				</Link>
+			</Menu.Item>
+			<Menu.Item key="clock">
+				<Link href='/c'>
+					<span>
+						<Icon type="clock-circle-o" />Clock
 					</span>
 				</Link>
 			</Menu.Item>
 		</Menu>
 	</Header>
 )
-
-// typically you want to use `next/link` for this usecase
-// but this example shows how you can also access the router
-// and use it manually
 
 function onClickHandler (href) {
   return (e) => {

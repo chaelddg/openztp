@@ -18,6 +18,10 @@ app.prepare()
     return app.render(req, res, '/a', req.query)
   })
 
+	server.get('/c', (req, res) => {
+    return app.render(req, res, '/c', req.query)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
